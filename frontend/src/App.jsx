@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Center, Flex, Text, Box, Heading, Grid, SimpleGrid } from '@chakra-ui/react'
+import NavBar from './NavBar'
+import CardItem from './CardItem'
+import Footer from './Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Center w="100%">
+      <Box w="100%">
+        <NavBar />
+        <Center>
+        <Box w="90%">
+          <Heading as="h1" fontSize="40px" fontWeight={"bold"} p="40px 0px 30px 0px">Лампочки</Heading>
+          <SimpleGrid  p="0px 0px 30px 0px" minChildWidth="30%" spacing="100px" minH="full" gap="40px">
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+          </SimpleGrid>
+        </Box>
+        </Center>
+        <Footer />
+      </Box>
+    </Center>
   )
 }
 
