@@ -12,6 +12,8 @@ RUN npm install -g vite
 # Для использования в продакшне
 # RUN npm install --production
 
+COPY . .
+
 # Build the Vite application
 RUN npm run build
 
