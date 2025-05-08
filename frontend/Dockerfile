@@ -7,7 +7,7 @@ WORKDIR ${APP_DIR}
 
 # Установка зависимостей
 COPY package*.json ./
-RUN npm install
+RUN npm install --production
 RUN npm install -g vite
 # Для использования в продакшне
 # RUN npm install --production
