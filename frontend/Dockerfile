@@ -1,10 +1,5 @@
 FROM node:23.5.0-alpine3.21
 
-# Папка приложения
-ARG APP_DIR=app
-RUN mkdir -p ${APP_DIR}
-WORKDIR ${APP_DIR}
-
 # Установка зависимостей
 COPY package*.json ./
 RUN npm install
