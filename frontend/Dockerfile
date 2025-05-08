@@ -2,8 +2,7 @@ FROM node:23.5.0-alpine3.21
 
 # Установка зависимостей
 COPY package*.json ./
-RUN npm install
-RUN npm install -g vite
+RUN npm install -g
 # Для использования в продакшне
 # RUN npm install --production
 
