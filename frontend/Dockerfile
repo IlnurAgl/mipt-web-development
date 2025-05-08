@@ -12,11 +12,11 @@ RUN npm install -g vite
 # Для использования в продакшне
 # RUN npm install --production
 
-# Копирование файлов проекта
-COPY . .
+# Build the Vite application
+RUN npm run build
 
-# Уведомление о порте, который будет прослушивать работающее приложение
-EXPOSE 5173
+# Expose the port the app runs on
+EXPOSE 4173
 
-# Запуск проекта
-CMD "npm" "run" "dev"
+# Command to run the app
+CMD "npm" "run" "preview"
