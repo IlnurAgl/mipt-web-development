@@ -8,6 +8,7 @@ RUN npm install -g vite
 # RUN npm install --production
 
 COPY . .
+COPY vite.config.ts ./
 
 # Build the Vite application
 RUN npm run build
