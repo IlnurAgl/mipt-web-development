@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 5173
 
 # Запуск проекта
-CMD ["npm", "run" "dev"]
+CMD "npm" "run" "dev"
