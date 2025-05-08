@@ -7,7 +7,7 @@ WORKDIR ${APP_DIR}
 
 # Установка зависимостей
 COPY package*.json ./
-RUN npm install
+RUN node --max-old-space-size=8000 $(which npm)
 # Для использования в продакшне
 # RUN npm install --production
 
