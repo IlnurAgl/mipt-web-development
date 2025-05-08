@@ -7,7 +7,7 @@ WORKDIR ${APP_DIR}
 
 # Установка зависимостей
 COPY package*.json ./
-RUN node --max-old-space-size=8000 $(which npm)
+RUN npm install -g increase-memory-limit
 # Для использования в продакшне
 # RUN npm install --production
 
