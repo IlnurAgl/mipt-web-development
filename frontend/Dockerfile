@@ -7,7 +7,8 @@ WORKDIR ${APP_DIR}
 
 # Установка зависимостей
 COPY package*.json ./
-RUN npm install -g increase-memory-limit
+RUN npm install
+RUN npm install -g vite
 # Для использования в продакшне
 # RUN npm install --production
 
