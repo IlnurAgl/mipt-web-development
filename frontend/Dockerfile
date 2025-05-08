@@ -1,4 +1,4 @@
-FROM node:23.5.0
+FROM 23.5.0-alpine3.21
 
 # Папка приложения
 ARG APP_DIR=app
