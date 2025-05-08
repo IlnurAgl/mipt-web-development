@@ -14,7 +14,7 @@ export default function NavBar() {
         </Flex>
         <Flex align={"center"} gap="20px">
           <Button bg="gray.100" href="/cart" size="48px"><Link href="/cart"><HiMiniShoppingCart size="48px" color='#000000' href="/cart" /></Link></Button>
-          <Heading fontWeight="bold">1</Heading>
+          <Heading fontWeight="bold">3</Heading>
         </Flex>
       </Flex>
     </Center>

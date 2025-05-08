@@ -9,6 +9,9 @@ function App() {
       <Box w="100%">
         <NavBar />
         <Outlet />
+        <br />
+        <br />
+        <br />
         <Footer />
       </Box>
     </Center>
