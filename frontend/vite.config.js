@@ -5,13 +5,13 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react({
-    jsxRuntime: 'classic' // Add this line
+    // jsxRuntime: 'classic' // Add this line
   }), ],
-  resolve: {
-    alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     '@/': `${path.resolve(__dirname, 'src')}/`,
+  //   },
+  // },
   // server: {
   //   fs: {
   //     cachedChecks: false
