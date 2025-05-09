@@ -20,7 +20,7 @@ export default function BulbPage() {
             <Grid templateColumns="repeat(2, 1fr)" gap="20px">
             <GridItem>
               <Field.Root>
-              <Field.Label fontSize="24px" font="Inter"><Heading>Адрес доставка:</Heading></Field.Label>
+              <Field.Label fontSize="24px" font="Inter"><Heading>Адрес доставки:</Heading></Field.Label>
               </Field.Root>
             </GridItem>
             <GridItem>
