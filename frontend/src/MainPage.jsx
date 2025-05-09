@@ -1,5 +1,5 @@
 import { Center, Flex, Text, Box, Heading, Grid, SimpleGrid } from '@chakra-ui/react'
-import CardItem from '../CardItem'
+import CardItem from './CardItem'
 
 export default function MainPage() {
     return (

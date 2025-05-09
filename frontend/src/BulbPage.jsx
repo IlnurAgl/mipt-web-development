@@ -1,5 +1,5 @@
 import { Center, Flex, Text, Box, Heading, NumberInput, Image } from '@chakra-ui/react'
-import ImageCard from '../assets/1.jpg'
+import ImageCard from './assets/1.jpg'
 import { HiMiniShoppingCart } from "react-icons/hi2";
 
 

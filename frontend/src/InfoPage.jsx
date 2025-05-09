@@ -1,5 +1,5 @@
 import { Heading, Box, Center, Flex, Image, Text } from '@chakra-ui/react'
-import ImageCard from '../assets/base.png'
+import ImageCard from './assets/base.png'
 
 export default function InfoPage() {
     return (

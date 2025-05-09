@@ -1,5 +1,5 @@
 import { Center, Grid, GridItem, Box, Heading, Fieldset, Field, Input, Flex, Button } from '@chakra-ui/react'
-import CartItem from '../CartItem'
+import CartItem from './CartItem'
 
 
 export default function BulbPage() {
