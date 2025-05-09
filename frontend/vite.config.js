@@ -7,14 +7,14 @@ export default defineConfig({
   plugins: [react({
     jsxRuntime: 'classic' // Add this line
   })],
-  resolve: {
-    alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
-    },
-  },
-  server: {
-    fs: {
-      cachedChecks: false
-    }
-  }
+  // resolve: {
+  //   alias: {
+  //     '@/': `${path.resolve(__dirname, 'src')}/`,
+  //   },
+  // },
+  // server: {
+  //   fs: {
+  //     cachedChecks: false
+  //   }
+  // }
 })
