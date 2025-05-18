@@ -47,7 +47,7 @@ def delete_product(order_id: int, db: Session = Depends(get_db)):
     
     db.delete(product)
     db.commit()
-    return {"message": "Product deleted successfully"}
+    return {"message": "Order deleted successfully"}
 
 
 @app.put("/orders/{order_id}", response_model=Order)
