@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: "products_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - network
+  
+  postgres2:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: "orders_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5433:5433"
+    volumes:
+      - db2:/var/lib/postgresql/data
+    networks:
+      - network
+
+  products:
+    build: products
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - network
+
+  orders:
+    build: orders
+    ports:
+      - "8001:8000"
+    depends_on:
+      - postgres
+    networks:
+      - network
+
+volumes:
+  db:
+  db2:
+
+networks:
+  network:
