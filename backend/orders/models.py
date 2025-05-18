@@ -9,4 +9,4 @@ class Order(Base):
     id = Column(Integer, primary_key=True, index=True)
     customer_name = Column(String, nullable=False)
     phone = Column(String, nullable=False)
-    items = Column(JSON, nullable=False)  # Список товаров
+    goods = Column(JSON, nullable=False)  # Список товаров

@@ -13,9 +13,9 @@ app = FastAPI()
 
 @app.post("/orders/", response_model=Order)
 async def create_order(order: OrderCreate, db: Session = Depends(get_db)):
-    for item in order.items:
+    for item in order.goods:
         async with httpx.AsyncClient() as client:
-            response = await client.get(f'http://products/products/{item}')
+            response = await client.get(f'http://products:8000/products/{item}')
             if response.status_code != 200:
                 raise HTTPException(status_code=response.status_code, detail=response.text)
     db_order = OrderModel(**order.model_dump())
@@ -41,9 +41,9 @@ def read_order(order_id: int, db: Session = Depends(get_db)):
 
 @app.delete("/orders/{order_id}")
 def delete_product(order_id: int, db: Session = Depends(get_db)):
-    product = db.query(Order).filter(Order.id == order_id).first()
+    product = db.query(OrderModel).filter(OrderModel.id == order_id).first()
     if not product:
-        raise HTTPException(status_code=404, detail="Product not found")
+        raise HTTPException(status_code=404, detail="Order not found")
     
     db.delete(product)
     db.commit()
