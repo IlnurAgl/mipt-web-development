@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
+import httpx
 
 from models import Order as OrderModel, Base
 from schemas import Order, OrderCreate
@@ -11,7 +12,12 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 @app.post("/orders/", response_model=Order)
-def create_order(order: OrderCreate, db: Session = Depends(get_db)):
+async def create_order(order: OrderCreate, db: Session = Depends(get_db)):
+    for item in order.items:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(f'http://products/products/{item}')
+            if response.status_code != 200:
+                raise HTTPException(status_code=response.status_code, detail=response.text)
     db_order = OrderModel(**order.model_dump())
     db.add(db_order)
     db.commit()

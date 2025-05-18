@@ -10,4 +10,3 @@ class Order(Base):
     customer_name = Column(String, nullable=False)
     phone = Column(String, nullable=False)
     items = Column(JSON, nullable=False)  # Список товаров
-    quantities = Column(JSON, nullable=False)  # Количества для каждого товара
