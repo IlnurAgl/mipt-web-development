@@ -89,22 +89,46 @@ export default function CartPage() {
     }
   };
   const [cartItems, setCartItems] = useState([]);
+  const [productsData, setProductsData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getCartItems = () => {
+    const fetchCartData = async () => {
       const items = [];
+      const products = {};
+      
+      // Получаем товары из localStorage
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key.startsWith('cart_')) {
           const id = key.replace('cart_', '');
           const quantity = localStorage.getItem(key);
           items.push({ id, quantity });
+          
+          // Загружаем данные каждого товара
+          try {
+            const response = await axios.get(`http://127.0.0.1:8000/products/${id}`);
+            products[id] = response.data;
+          } catch (error) {
+            console.error(`Error fetching product ${id}:`, error);
+            products[id] = { name: 'Товар не найден', price: 0 };
+          }
         }
       }
+      
       setCartItems(items);
+      setProductsData(products);
+      setLoading(false);
     };
-    getCartItems();
+
+    fetchCartData();
   }, []);
+
+  if (loading) return (
+    <Center h="100vh">
+      <Text fontSize="2xl">Загрузка корзины...</Text>
+    </Center>
+  );
 
   return (
       <Box>
@@ -118,6 +142,7 @@ export default function CartPage() {
               key={item.id}
               id={item.id}
               quantity={item.quantity}
+              product={productsData[item.id] || { name: 'Товар', price: 0 }}
               onRemove={(id) => {
                 localStorage.removeItem(`cart_${id}`);
                 window.dispatchEvent(new Event('cartUpdated'));
