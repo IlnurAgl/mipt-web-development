@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import List
 import httpx
@@ -10,6 +11,14 @@ from database import get_db, engine
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/orders/", response_model=Order)
 async def create_order(order: OrderCreate, db: Session = Depends(get_db)):

@@ -5,10 +5,19 @@ from typing import List
 from models import Product as ProductModel, Base
 from schemas import Product, ProductCreate
 from database import get_db, engine
+from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/products/", response_model=Product)
 def create_product(product: ProductCreate, db: Session = Depends(get_db)):

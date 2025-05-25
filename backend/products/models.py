@@ -8,6 +8,6 @@ class Product(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), index=True, nullable=False)
-    description = Column(String(500))
+    description = Column(String(10000))
     price = Column(Float, nullable=False)
     image_base64 = Column(Text)

@@ -3,7 +3,7 @@ from typing import Optional
 
 class ProductBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
+    description: Optional[str] = Field(None, max_length=10000)
     price: float = Field(..., gt=0)
     image_base64: Optional[str] = None
     
