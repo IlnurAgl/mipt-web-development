@@ -1,7 +1,12 @@
-from sqlalchemy import Column, Integer, String, JSON
+from sqlalchemy import Column, Integer, String, JSON, Enum
 from sqlalchemy.ext.declarative import declarative_base
+import enum
 
 Base = declarative_base()
+
+class OrderStatus(str, enum.Enum):
+    active = "active"
+    completed = "completed"
 
 class Order(Base):
     __tablename__ = "orders"
@@ -11,3 +16,4 @@ class Order(Base):
     phone = Column(String, nullable=False)
     goods = Column(JSON, nullable=False)  # Список товаров
     address = Column(String, nullable=False)
+    status = Column(Enum(OrderStatus), nullable=False, default=OrderStatus.active)

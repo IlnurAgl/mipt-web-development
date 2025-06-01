@@ -1,11 +1,13 @@
 from pydantic import BaseModel, Field, validator
 from typing import List, Dict
+from models import OrderStatus
 
 class OrderCreate(BaseModel):
     customer_name: str = Field(..., min_length=2, max_length=100)
     phone: str
     goods: Dict[int, int]
     address: str
+    status: OrderStatus = Field(default=OrderStatus.active)
 
     @validator('phone')
     def validate_phone(cls, v):
@@ -24,6 +26,7 @@ class OrderCreate(BaseModel):
 
 class Order(OrderCreate):
     id: int
+    status: OrderStatus
 
     class Config:
         from_attributes = True
